@@ -1,0 +1,15 @@
+{
+  "name": "dice-probabilities",
+  "version": "1.0.0",
+  "description": "Calculate the probabilities of rolling less than p on n s-sided dice.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dice",
+    "probabilities"
+  ],
+  "author": "Tommy M. McGuire",
+  "license": "MIT"
+}
