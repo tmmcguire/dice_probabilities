@@ -1,7 +1,14 @@
 'use strict';
 
-// http://mathworld.wolfram.com/Dice.html
-// http://mathforum.org/library/drmath/view/52207.html
+// Compute the probability of rolling p on n s-sided dice.
+// 
+// The formula for the probability comes from
+// [Wolfram](http://mathworld.wolfram.com/Dice.html);
+// the multiplicative formula for the [binomial
+// coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient) comes
+// from Wikipedia.
+//
+// This page is just interesting: http://mathforum.org/library/drmath/view/52207.html
 
 /// The number of ways to choose k items from a collection of n.
 function binomialCoefficient(n, k) {
@@ -24,9 +31,6 @@ function probability(p, n, s) {
 	return (1 / Math.pow(s, n)) * sum;
 }
 
-let sum = 0.0;
-for (let i = 1; i <= 20; ++i) {
-	let p = probability(i, 3, 6);
-	sum += p;
-	console.log(i + ' ' + p.toFixed(5) + ' ' + sum.toFixed(5));
+module.exports = {
+	P: probability,
 }
