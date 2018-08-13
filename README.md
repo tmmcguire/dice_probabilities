@@ -14,6 +14,10 @@ http://mathforum.org/library/drmath/view/52207.html
 
 ## Installation
 
+```sh
+$ npm install dice-probabilities
+```
+
 ## Usage
 
 This module provides one function to compute the probability of rolling
@@ -33,3 +37,4 @@ for (let i = 3; i <= 18; i++) {
 
 let r = dice_prop.roll(2, 6);
 ```
+
