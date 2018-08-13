@@ -16,6 +16,9 @@ http://mathforum.org/library/drmath/view/52207.html
 
 ## Usage
 
+This module provides one function to compute the probability of rolling
+a specific number and another to roll dice.
+
 ```javascript
 const dice_prob = require('dice-probabilities');
 
@@ -27,4 +30,6 @@ let cp = 0.0;
 for (let i = 3; i <= 18; i++) {
   cp += dice_prop.P(i, 3, 6);
 }
+
+let r = dice_prop.roll(2, 6);
 ```

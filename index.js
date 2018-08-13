@@ -12,25 +12,38 @@
 
 /// The number of ways to choose k items from a collection of n.
 function binomialCoefficient(n, k) {
-	let prod = 1.0;
-	for (let i = 1; i <= k; ++i) {
-		prod *= (n + 1 - i) / i;
-	}
-	return prod;
+  let prod = 1.0;
+  for (let i = 1; i <= k; ++i) {
+    prod *= (n + 1 - i) / i;
+  }
+  return prod;
 }
 
 /// The probability of rolling p on n s-sided dice.
 function probability(p, n, s) {
-	let sum = 0.0;
-	for (let k = 0; k <= Math.floor( (p - n) / s ); k++) {
-		let prod = Math.pow(-1, k);
-		prod *= binomialCoefficient(n, k);
-		prod *= binomialCoefficient(p - (s * k) - 1, n - 1);
-		sum += prod;
-	}
-	return (1 / Math.pow(s, n)) * sum;
+  let sum = 0.0;
+  for (let k = 0; k <= Math.floor( (p - n) / s ); k++) {
+    let prod = Math.pow(-1, k);
+    prod *= binomialCoefficient(n, k);
+    prod *= binomialCoefficient(p - (s * k) - 1, n - 1);
+    sum += prod;
+  }
+  return (1 / Math.pow(s, n)) * sum;
+}
+
+/// Roll n s-sided dice
+function roll(n, s) {
+  let r = Math.random();        // 0.0 <= r < 1.0
+  let p = n;                    // minimum roll = n
+  let c = probability(p, n, s); // cumulative probability
+  while (r > c) {
+    p += 1;
+    c += probability(p, n, s);
+  }
+  return p;
 }
 
 module.exports = {
-	P: probability,
-}
+  P: probability,
+  roll: roll,
+};
